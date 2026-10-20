@@ -70,6 +70,22 @@ Describe the desired result and where to stop, such as “Search for Sports Rese
 The starting URL chooses the initial page; the same general agent policy handles the task.
 Website compatibility is still subject to the MVP limitations below.
 
+## Keep private data local
+
+> [!CAUTION]
+> Never commit or push files that contain personal data, API keys, tokens, cookies, or other secrets. They must stay on this machine only.
+
+`.env` is ignored by git and holds `TYPESAFE_API_KEY` and `TEXT_MODEL_API_KEY`; commit only `.env.example`, with empty values. `iherb_script.py` is a local-only run script containing a personal shipping address, phone number, and discount codes; it is listed in `.gitignore` and must never be added with `git add -f`. Keep task scripts with personal data, traces, and artifacts out of the repository. The shipped examples use fictional tasks.
+
+Before committing, check what git can see:
+
+```bash
+git status --short
+git check-ignore -v .env iherb_script.py
+```
+
+If a secret or personal data reaches a remote, rotate the credential and remove the data from history; deleting it in a later commit is not enough. See [SECURITY.md](SECURITY.md).
+
 Chrome connects through [Browser Harness](https://github.com/browser-use/browser-harness), installed by `uv sync`. Run `uv run browser-harness --doctor` if it needs connecting. Allow remote debugging in Chrome when prompted.
 
 `TEXT_MODEL_API_KEY` is an OpenRouter key in the example configuration. The current demo uses `inception/mercury-2.5` with reasoning disabled. Gemini, GLM, and DeepSeek can also use the OpenAI-compatible text helper; configure the appropriate model, endpoint, and reasoning setting.

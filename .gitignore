@@ -1,4 +1,22 @@
+# Local-only private files. Never commit or push these.
+# Personal data, credentials, tokens, cookies, and secrets stay on this machine.
+# .env.example is the only env file that belongs in git; it contains empty values.
 .env
+.env.*
+!.env.example
+
+# Local task scripts that may contain a shipping address, phone number, or codes.
+iherb_script.py
+*.local.py
+
+# Secret stores and key material.
+secrets/
+credentials/
+*.pem
+*.key
+*.token
+*.secret
+
 .venv/
 __pycache__/
 .pytest_cache/
