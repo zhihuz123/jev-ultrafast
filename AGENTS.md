@@ -8,7 +8,7 @@ Read README.md before editing. Keep the loop small: page -> indexed elements -> 
 - TYPE_TEXT invokes the text LLM. Cache a stale retry's value only while its entire helper input is identical.
 - Never retry a browser mutation. Log execution before observing its result.
 - Screenshots are optional; the model does not consume them. Keep demonstration footage at its original speed.
-- Keep credentials server-side and .env ignored. Tests must not call paid APIs.
+- Keep credentials server-side and .env ignored. Never commit personal data, tokens, or secrets; `iherb_script.py` is local-only and ignored. Tests must not call paid APIs.
 - Verify actual final outcomes independently. A DONE choice is not proof of success.
 - Keep examples, README claims, raw evidence, and model-call counts consistent.
 - Do not commit or push unless the user requests it.
